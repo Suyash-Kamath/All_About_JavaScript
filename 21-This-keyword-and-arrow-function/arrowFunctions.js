@@ -1,7 +1,7 @@
 /*
 
 this keyword => tells about the current context( values , what variables are holding) or refers to current context
-
+https://chatgpt.com/share/670f653b-9288-8006-bc2a-4da57fa84215
 */
 
 const user = {
