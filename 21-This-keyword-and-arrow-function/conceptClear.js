@@ -144,3 +144,6 @@
 // - **Strict Mode**: In strict mode, regular functions have `this` as `undefined` in the global scope, but arrow functions behave the same (lexically inherit `this`).
 
 // Let me know if any part needs further clarification or if you'd like more examples!
+
+
+// https://chatgpt.com/share/670f653b-9288-8006-bc2a-4da57fa84215
