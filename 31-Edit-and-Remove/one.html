@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="background-color: #212121; color: white;">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(langName){
+       const li =  document.createElement('li');
+       li.innerHTML = `${langName}` // inneHTML karke poori traversing hoti hai bhai
+       document.querySelector('.language').appendChild(li);
+    }
+    addLanguage("Python")
+    addLanguage("TypeScript") // appendChild is an expensive because poora tree ho raha hai traverse , optimization issue aa rhi hai
+    
+    function addOptimisely(langName){
+       const li =  document.createElement('li') ;
+       li.appendChild(document.createTextNode(langName));
+       document.querySelector('.language').appendChild(li)
+
+    }
+    addOptimisely('golang')
+
+    // Edit
+
+   const secondLang =  document.querySelector("li:nth-child(2)")
+    console.log(secondLang);
+    
+//    secondLang.innerHTML = "Mojo" not optimal
+
+    const newLi = document.createElement('li');
+    newLi.textContent = "Mojo"
+    secondLang.replaceWith(newLi)
+    // innerHTML and textContent me kuch khaas antar nahi aane waala;
+
+    // edit
+
+    const firstLang = document.querySelector("li:first-child");
+    firstLang.outerHTML = `<li>TypeScript</li>`
+
+
+    // remove
+
+    const lastLang = document.querySelector("li:last-child");
+    lastLang.remove();
+
+</script>
+</html>
+
+
+<!-- 
+
+What the Comment Means:
+appendChild Traverses the Tree:
+
+When you call appendChild, the browser must update the DOM tree to insert the new element into the specified location. This involves traversing the existing DOM structure to find the correct spot and then re-rendering the changes.
+This traversal and re-rendering can become computationally expensive if:
+The DOM tree is very large.
+Many updates are made to the DOM in quick succession.
+Optimization Issue:
+
+Repeatedly updating the DOM (e.g., using appendChild in a loop) can lead to performance bottlenecks, especially if the DOM needs to be re-rendered after each update.
+This is because the browser recalculates styles, reflows layouts, and repaints the screen after every DOM manipulation.
+
+-->
